@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from "prop-types";
 
 // Component for each square on the board
 function Square({ value, onSquareClick }) {
@@ -7,6 +8,10 @@ function Square({ value, onSquareClick }) {
             {value}
         </button>
     );
+}
+Square.propTypes = {
+    value: PropTypes.string,
+    onSquareClick: PropTypes.func,
 }
 
 // Main board component
@@ -61,7 +66,12 @@ function Board({ xIsNext, squares, onPlay }) {
         </>
     );
 }
+Board.propTypes = {
+    xIsNext: PropTypes.bool.isRequired,
+    squares: PropTypes.array.isRequired,
+    onPlay: PropTypes.func.isRequired,
 
+}
 // Main game component
 export default function Game() {
     // State to store the history of moves
