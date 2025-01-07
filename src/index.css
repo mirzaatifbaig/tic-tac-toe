@@ -1,79 +1,54 @@
-/* General body styling for dark theme */
+/* Make the body take full height and center the board */
 body {
-  background-color: #121212;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensure full viewport height */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the top */
+    padding-top: 1cm; /* Space the board 1cm below the top */
+    font-family: Arial, sans-serif; /* Ensure consistent text rendering */
+
+}
+.square.highlight {
+    background-color: yellow;
+    transition: background-color 0.3s ease; /* Optional: smooth background color change on hover */
 }
 
-/* Styling for the game container */
-.game {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-/* Styling for the game board */
-.game-board {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/* Styling for each row of the board */
+/* Ensure the board row layout is consistent and columns don't have excessive space */
 .board-row {
-  display: flex;
+    display: flex;
+    gap: 4px; /* Controls the gap between squares (you can adjust this as needed) */
+    margin: 0; /* Remove default margin between rows */
+    padding: 0; /* Remove any padding */
 }
 
-/* Styling for each square on the board */
+/* Style each square (button) */
 .square {
-  background-color: #333333;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  font-size: 24px;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    width: 80px; /* Fixed width for better button size */
+    height: 80px; /* Fixed height for consistent button size */
+    display: flex; /* Use flex to center the text */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    font-size: 36px; /* Bigger font size for the X */
+    font-weight: bold; /* Make the X bold */
+    font-family: Arial, sans-serif; /* Ensure consistent text rendering */
+    background-color: #f4f4f4; /* Button background */
+    border: 2px solid #ccc; /* Border around button */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Optional: smooth background color change on hover */
+    line-height: 1; /* Prevent any unwanted vertical spacing */
 }
 
+/* Add hover effect for buttons */
 .square:hover {
-  background-color: #555555;
+    background-color: #e0e0e0;
 }
 
-/* Styling for the status display */
-.status {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-/* Styling for the move history */
-.game-info {
-  text-align: center;
-}
-
-button {
-  background-color: #444444;
-  border: none;
-  color: #ffffff;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background-color: #666666;
-}
-
-button:focus {
-  outline: none;
+/* Add focus state (optional but good for accessibility) */
+.square:focus {
+    border-color: #888;
+    background-color: #ddd;
 }
