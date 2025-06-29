@@ -7,13 +7,13 @@ function Square({ value, onSquareClick }) {
 Square.propTypes = {
     value: PropTypes.number.isRequired,
     onSquareClick: PropTypes.func.isRequired,
-}// Assume you have a Square component
+}
 
 export default function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null));
 
     function handleClick(i) {
-        if (squares[i]) return; // Prevent overwriting existing moves
+        if (squares[i]) return;
         const nextSquares = squares.slice();
         nextSquares[i] = i % 2 === 0 ? "O" : "X";
         setSquares(nextSquares);

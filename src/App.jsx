@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from "prop-types";
 
-// Component for each square on the board
+
 function Square({ value, onSquareClick }) {
     return (
         <button className="square" onClick={onSquareClick}>
@@ -14,25 +14,25 @@ Square.propTypes = {
     onSquareClick: PropTypes.func,
 }
 
-// Main board component
+
 function Board({ xIsNext, squares, onPlay }) {
     function handleClick(i) {
-        // Ignore click if there's a winner or the square is already filled
+
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
-        // Copy the squares array
+
         const nextSquares = squares.slice();
-        // Set the clicked square to 'X' or 'O' based on the current player
+
         if (xIsNext) {
             nextSquares[i] = 'X';
         } else {
             nextSquares[i] = 'O';
         }
-        // Pass the updated squares array to the parent component
+
         onPlay(nextSquares);
     }
-    // Determine if there's a winner
+
     const winner = calculateWinner(squares);
     let status;
     if (winner) {
@@ -67,24 +67,24 @@ Board.propTypes = {
     squares: PropTypes.array.isRequired,
     onPlay: PropTypes.func.isRequired,
 }
-// Main game component
+
 export default function Game() {
-    // State to store the history of moves
+
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [currentMove, setCurrentMove] = useState(0);
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
     function handlePlay(nextSquares) {
-        // Add the new move to the history
+
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
         setHistory(nextHistory);
         setCurrentMove(nextHistory.length - 1);
     }
     function jumpTo(nextMove) {
-        // Jump to a specific move in the history
+
         setCurrentMove(nextMove);
     }
-    // Map over the history to create buttons for each move
+
     const moves = history.map((squares, move) => {
         let description;
         if (move > 0) {
@@ -109,7 +109,7 @@ export default function Game() {
         </div>
     );
 }
-// Helper function to determine the winner
+
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
@@ -128,3 +128,4 @@ function calculateWinner(squares) {
         }
     }
     return null;
+}

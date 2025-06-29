@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import PropTypes from "prop-types";
 
-// Square Component
+
 function Square({ value, onSquareClick, highlight }) {
     return (
         <button className={`square ${highlight ? 'highlight' : ''}`} onClick={onSquareClick}>
@@ -16,7 +16,7 @@ Square.propTypes = {
     highlight: PropTypes.bool,
 };
 
-// Board Component
+
 function Board({ xIsNext, squares, onPlay, winningSquares }) {
     const handleClick = useCallback((i) => {
         if (calculateWinner(squares) || squares[i]) {
@@ -53,7 +53,7 @@ Board.propTypes = {
     winningSquares: PropTypes.arrayOf(PropTypes.number),
 };
 
-// Game Component
+
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [currentMove, setCurrentMove] = useState(0);
@@ -88,7 +88,7 @@ export default function Game() {
     const status = winner ? `Winner: ${winner.winner}` : (currentMove === 9 ? "It's a draw!" : `Next player: ${xIsNext ? 'X' : 'O'}`);
     const winningSquares = winner ? winner.line : [];
 
-    // Sort moves based on the state
+
     const sortedMoves = isAscending ? moves : moves.reverse();
 
     return (
@@ -108,7 +108,7 @@ export default function Game() {
     );
 }
 
-// calculateWinner Function
+
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
